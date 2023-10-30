@@ -36,9 +36,9 @@ function gridMaker() {
 
         // console.log(square);
         if (bombe.includes(i)) {
-            square.className += `bomb-square ${squareClass}`;
+            square.className = `bomb-square ${squareClass}`;
           } else {
-            square.className += `square ${squareClass}`;
+            square.className += `bomb-square square ${squareClass}`;
         }
 
         square.addEventListener("click", function(){
@@ -110,6 +110,7 @@ function colorSquare(square, number) {
     //     console.log(`cella cliccata`, square.textContent);
     // }
     giocando = false;
+    mostraClick();
     alert("Hai perso! Game over!");
     }else{
         square.textContent = number;
@@ -152,5 +153,11 @@ function TheBomb (max) {
 //     return(result);
 // }
 
+
+function mostraClick() {
+    let contoClickElem = document.createElement("p");
+    contoClickElem.innerHTML = `Hai perso dopo ${contoClick} tentativi!`;
+    document.body.appendChild(contoClickElem);
+}
 
 
