@@ -35,7 +35,11 @@ function gridMaker() {
         square.className = "square " + squareClass;
 
         // console.log(square);
-        square.className += bombe.includes(i) ? `bomb-square ${squareClass}` : `square ${squareClass}`;
+        if (bombe.includes(i)) {
+            square.className += `bomb-square ${squareClass}`;
+          } else {
+            square.className += `square ${squareClass}`;
+        }
 
         square.addEventListener("click", function(){
             colorSquare(square, i)
