@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+.container {
+    width: 80%;
+    margin: 5rem auto;
+    
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+.wrapper {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    
+}
+.startGame {
+    padding: 0.5rem 1rem;
+
+}
+
+#difficultyLevel {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.square {
+
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.square-easy {
+    width: calc(100% / 10);
+    aspect-ratio: 1;
+}
+
+.square-medium {
+    width: calc(100% / 9);
+    aspect-ratio: 1;
+}
+
+.square-hard {
+    width: calc(100% / 7);
+    aspect-ratio: 1;
+}
+
+
+
