@@ -3,6 +3,7 @@ let bombe;
 document.getElementById("btn").addEventListener("click" , gridMaker);
 
 const rowg = document.querySelector(".row");
+const contoClickElem = document.querySelector(".wrapper")
 
 const difficultyLevel = document.getElementById("difficultyLevel");
 
@@ -10,6 +11,7 @@ const difficultyLevel = document.getElementById("difficultyLevel");
 
 function gridMaker() {
     giocando = true;
+    contoClick = 0;
     let difficulty = difficultyLevel.value;
     let DimensioneGriglia;
 
@@ -27,6 +29,7 @@ function gridMaker() {
     }
 
     rowg.innerHTML = "";
+    // contoClickElem = "";
     
     bombe = TheBomb(DimensioneGriglia);
     console.log(bombe);
@@ -173,12 +176,31 @@ function TheBomb (max) {
 function mostraClick() {
     let contoClickElem = document.getElementById("contoClickElem");
 
-    if (!contoClickElem) {
-        contoClickElem = document.createElement("p");
-        contoClickElem.id = "contoClickElem";
-        contoClickElem.innerHTML = `Hai perso dopo ${contoClick} tentativi!`;
-        document.querySelector(".wrapper").appendChild(contoClickElem);
+    if (contoClickElem) {
+        contoClickElem.remove();
     }
+    
+
+    // if (!contoClickElem) {
+    //     contoClickElem = document.createElement("p");
+    //     contoClickElem.id = "contoClickElem";
+    //     document.querySelector(".wrapper").appendChild(contoClickElem);
+    // }
+
+    // contoClickElem.innerHTML = `Hai perso dopo ${contoClick} tentativi!`;
+
+    // contoClickElem.innerHTML = "";
+
+    contoClickElem = document.createElement("p");
+    contoClickElem.id = "contoClickElem";
+    document.querySelector(".wrapper").appendChild(contoClickElem);
+
+    
+    contoClickElem.innerHTML = `Hai perso dopo ${contoClick} tentativi!`;
+
+
+
+    
 }
 
 
