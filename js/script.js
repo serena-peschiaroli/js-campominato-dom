@@ -1,4 +1,4 @@
-
+let bombe;
 
 document.getElementById("btn").addEventListener("click" , gridMaker);
 
@@ -27,7 +27,7 @@ function gridMaker() {
 
     rowg.innerHTML = "";
     
-    const bombe = TheBomb(DimensioneGriglia);
+    bombe = TheBomb(DimensioneGriglia);
     console.log(bombe);
 
     for (let i = 1; i <= DimensioneGriglia; i++) {
@@ -35,9 +35,11 @@ function gridMaker() {
         square.className = "square " + squareClass;
 
         // console.log(square);
+        square.className += bombe.includes(i) ? `bomb-square ${squareClass}` : `square ${squareClass}`;
 
         square.addEventListener("click", function(){
             colorSquare(square, i)
+            
         })
 
         rowg.appendChild(square);
@@ -79,23 +81,37 @@ function gridMaker() {
 // COLORE + NUMERO AL CLICK
 
 let contoClick = 0;
+let giocando = true;
 
 function colorSquare(square, number) {
     // square.textContent= number;
     // square.style.backgroundColor = `aquamarine`;
     // console.log (`cella cliccata`, square.textContent);
+    if (!giocando) {
+        return;
+    }
 
     contoClick++;
     console.log(contoClick);
 
     if (bombe.includes(number)) {
-        square.textContent = "💣"; 
-        square.style.backgroundColor = "red";
-        console.log( "Hai perso! ");
-    }else {
+        // Reveal all bombs
+        document.querySelectorAll(".bomb-square").forEach(bombSquare => {
+            bombSquare.textContent = "💣";
+            bombSquare.style.backgroundColor = "red";
+        });
+    // }else {
+    //     square.textContent = number;
+    //     square.style.backgroundColor= `aquamarine`;
+    //     console.log(`cella cliccata`, square.textContent);
+    // }
+    giocando = false;
+    alert("Hai perso! Game over!");
+    }else{
         square.textContent = number;
         square.style.backgroundColor= `aquamarine`;
         console.log(`cella cliccata`, square.textContent);
+
     }
 
 }
