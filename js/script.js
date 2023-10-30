@@ -12,6 +12,7 @@ const difficultyLevel = document.getElementById("difficultyLevel");
 function gridMaker() {
     giocando = true;
     contoClick = 0;
+    document.querySelector('#contoClickElem').innerHTML = '';
     let difficulty = difficultyLevel.value;
     let DimensioneGriglia;
 
