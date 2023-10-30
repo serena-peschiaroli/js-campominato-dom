@@ -9,6 +9,7 @@ const difficultyLevel = document.getElementById("difficultyLevel");
 // funzione con difficoltà
 
 function gridMaker() {
+    giocando = true;
     let difficulty = difficultyLevel.value;
     let DimensioneGriglia;
 
@@ -88,6 +89,11 @@ let contoClick = 0;
 let giocando = true;
 
 function colorSquare(square, number) {
+
+    const contoClickElem = document.getElementById("contoClickElem");
+    if (contoClickElem) {
+        contoClickElem.remove();
+    }
     // square.textContent= number;
     // square.style.backgroundColor = `aquamarine`;
     // console.log (`cella cliccata`, square.textContent);
@@ -98,12 +104,22 @@ function colorSquare(square, number) {
     contoClick++;
     console.log(contoClick);
 
+    /* forEach  iterare su ogni elemento dell'array e fare specifiche operazioni per ogni elemento
+    array.forEach(function(element, index, array) {
+    // codice da esegiore per ogni elemento 
+    });
+    esempio let numbers = [1, 2, 3, 4, 5];
+
+    numbers.forEach(function(number, index) {
+    console.log(`Element at index ${index}: ${number}`);
+    });*/
+
     if (bombe.includes(number)) {
-        // Reveal all bombs
+     
         document.querySelectorAll(".bomb-square").forEach(bombSquare => {
             bombSquare.textContent = "💣";
             bombSquare.style.backgroundColor = "red";
-        });
+    });
     // }else {
     //     square.textContent = number;
     //     square.style.backgroundColor= `aquamarine`;
@@ -155,9 +171,14 @@ function TheBomb (max) {
 
 
 function mostraClick() {
-    let contoClickElem = document.createElement("p");
-    contoClickElem.innerHTML = `Hai perso dopo ${contoClick} tentativi!`;
-    document.body.appendChild(contoClickElem);
+    let contoClickElem = document.getElementById("contoClickElem");
+
+    if (!contoClickElem) {
+        contoClickElem = document.createElement("p");
+        contoClickElem.id = "contoClickElem";
+        contoClickElem.innerHTML = `Hai perso dopo ${contoClick} tentativi!`;
+        document.querySelector(".wrapper").appendChild(contoClickElem);
+    }
 }
 
 
